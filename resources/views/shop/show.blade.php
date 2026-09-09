@@ -43,16 +43,24 @@
                 {{ $product->description ?? 'Aucune description disponible pour ce produit.' }}
             </p>
 
-            <button
-                @if ($product->stock === 0) disabled @endif
-                class="mt-8 w-full bg-black text-white py-3 rounded-lg font-medium disabled:bg-gray-300 disabled:cursor-not-allowed"
-            >
-                @if ($product->stock === 0)
-                    Indisponible
-                @else
-                    Ajouter au panier
-                @endif
-            </button>
+          @if ($product->stock > 0)
+    <form action="{{ route('cart.add', $product) }}" method="POST" class="mt-8">
+        @csrf
+        <button
+            type="submit"
+            class="w-full bg-black text-white py-3 rounded-lg font-medium hover:bg-gray-800"
+        >
+            Ajouter au panier
+        </button>
+    </form>
+@else
+    <button
+        disabled
+        class="mt-8 w-full bg-gray-300 text-white py-3 rounded-lg font-medium cursor-not-allowed"
+    >
+        Indisponible
+    </button>
+@endif
 
             <div class="mt-6 text-xs text-gray-500 space-y-1">
                 <p>✓ Paiement sécurisé par Stripe</p>
