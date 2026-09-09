@@ -21,6 +21,11 @@ class Product extends Model
         'is_active',
     ];
 
+    public function getRouteKeyName(): string
+{
+    return 'slug';
+}
+
     protected function casts(): array
     {
         return [
