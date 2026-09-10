@@ -56,9 +56,12 @@
             <p class="text-lg font-semibold">
                 Total : {{ number_format($cart->items->sum(fn ($item) => $item->product->price * $item->quantity), 2) }} €
             </p>
-            <button class="bg-black text-white px-6 py-3 rounded-lg font-medium">
-                Passer commande
-            </button>
+            <form action="{{ route('checkout.start') }}" method="POST">
+    @csrf
+    <button type="submit" class="bg-black text-white px-6 py-3 rounded-lg font-medium">
+        Passer commande
+    </button>
+</form>
         </div>
     @endif
 @endsection
