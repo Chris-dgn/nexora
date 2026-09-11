@@ -62,15 +62,16 @@ class CheckoutController extends Controller
             'quantity' => $item->quantity,
         ])->toArray();
 
-        $session = StripeSession::create([
-            'mode' => 'payment',
-            'line_items' => $lineItems,
-            'success_url' => route('checkout.success').'?session_id={CHECKOUT_SESSION_ID}',
-            'cancel_url' => route('cart.show'),
-            'metadata' => [
-                'order_id' => $order->id,
-            ],
-        ]);
+      $session = StripeSession::create([
+    'mode' => 'payment',
+    'line_items' => $lineItems,
+    'customer_email' => $request->user()?->email,
+    'success_url' => route('checkout.success').'?session_id={CHECKOUT_SESSION_ID}',
+    'cancel_url' => route('cart.show'),
+    'metadata' => [
+        'order_id' => $order->id,
+    ],
+]);
 
         $order->update(['payment_id' => $session->id]);
 
