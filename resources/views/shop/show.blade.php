@@ -4,14 +4,13 @@
 
 @section('content')
     <div class="mb-6">
-        <a href="{{ route('shop.index') }}" class="text-sm text-gray-500 hover:text-black">
+       <a href="{{ route('shop.catalog') }}" class="text-sm text-gray-500 hover:text-black">
             {{ __('shop.back_to_catalog') }}
         </a>
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
-        <div class="aspect-square bg-gray-100 rounded-lg flex items-center justify-center text-gray-400">
-            {{ __('shop.image_placeholder') }}
+    <a href="{{ route('shop.catalog') }}" class="text-sm text-gray-500 hover:text-black">            {{ __('shop.image_placeholder') }}
         </div>
 
         <div>

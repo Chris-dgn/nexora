@@ -1,0 +1,27 @@
+<?php
+
+return [
+    'hero_title' => 'Carefully chosen tech,<br class="hidden md:block"> delivered to your door.',
+    'hero_subtitle' => 'Nexora selects reliable electronics, no jargon, no markup games — just what you need, at a fair price.',
+    'explore_catalog' => 'Explore the catalog',
+    'products_available' => ':count products available',
+    'product_available' => ':count product available',
+    'shop_preview' => 'Store overview',
+    'active_catalog' => 'Active catalog',
+    'categories' => 'Categories',
+    'average_rating' => 'Average customer rating',
+    'payment' => 'Payment',
+    'secured_by_stripe' => 'Secured by Stripe',
+    'explore_by_category' => 'Explore by category',
+    'products_count' => ':count products',
+    'product_count' => ':count product',
+    'recently_added' => 'Recently added',
+    'view_full_catalog' => 'View full catalog',
+    'secure_payment_title' => 'Secure payment',
+    'secure_payment_text' => 'Every transaction goes through Stripe — we never see your card details.',
+    'tracked_delivery_title' => 'Tracked delivery',
+    'tracked_delivery_text' => 'Estimated delivery shown as soon as your order is confirmed.',
+    'returns_title' => '30-day returns',
+    'returns_text' => 'Not the right fit? Send it back, no hassle.',
+    'cta_title' => 'Ready to find your next device?',
+];

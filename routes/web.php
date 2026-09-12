@@ -7,6 +7,7 @@ use App\Http\Controllers\Webhooks\StripeWebhookController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\LegalController;
+use App\Http\Controllers\HomeController;
 
 
 
@@ -14,7 +15,8 @@ Route::group([
     'prefix' => LaravelLocalization::setLocale(),
     'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath'],
 ], function () {
-    Route::get('/', [ShopController::class, 'index'])->name('shop.index');
+    Route::get('/', [HomeController::class, 'index'])->name('home');
+    Route::get('/catalogue', [ShopController::class, 'index'])->name('shop.catalog');
     Route::get('/produits/{product:slug}', [ShopController::class, 'show'])->name('shop.show');
 
     Route::get('/panier', [CartController::class, 'show'])->name('cart.show');

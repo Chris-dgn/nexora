@@ -80,7 +80,7 @@ class CheckoutController extends Controller
 
     public function success(Request $request): RedirectResponse
     {
-        return redirect()->route('shop.index')
+       return redirect()->route('shop.catalog')
             ->with('success', 'Merci pour ta commande ! Un email de confirmation te sera envoyé sous peu.');
     }
 

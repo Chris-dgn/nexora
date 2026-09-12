@@ -8,13 +8,13 @@
             <h2 class="font-semibold mb-3">{{ __('shop.categories') }}</h2>
             <ul class="space-y-2 text-sm">
                 <li>
-                    <a href="{{ route('shop.index') }}" class="text-gray-600 hover:text-black">
+                    <a href="{{ route('shop.catalog') }}" class="text-gray-600 hover:text-black">
                         {{ __('shop.all_categories') }}
                     </a>
                 </li>
                 @foreach ($categories as $category)
                     <li>
-                        <a href="{{ route('shop.index', ['category' => $category->slug]) }}"
+                        <a href="{{ route('shop.catalog', ['category' => $category->slug]) }}"
                            class="text-gray-600 hover:text-black">
                             {{ $category->name }}
                         </a>

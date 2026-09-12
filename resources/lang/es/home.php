@@ -1,0 +1,27 @@
+<?php
+
+return [
+    'hero_title' => 'Tecnología seleccionada con criterio,<br class="hidden md:block"> entregada en tu puerta.',
+    'hero_subtitle' => 'Nexora selecciona productos electrónicos fiables, sin jerga innecesaria ni sobreprecios — justo lo que necesitas, al precio justo.',
+    'explore_catalog' => 'Explorar el catálogo',
+    'products_available' => ':count productos disponibles',
+    'product_available' => ':count producto disponible',
+    'shop_preview' => 'Vista general de la tienda',
+    'active_catalog' => 'Catálogo activo',
+    'categories' => 'Categorías',
+    'average_rating' => 'Valoración media de clientes',
+    'payment' => 'Pago',
+    'secured_by_stripe' => 'Protegido por Stripe',
+    'explore_by_category' => 'Explorar por categoría',
+    'products_count' => ':count productos',
+    'product_count' => ':count producto',
+    'recently_added' => 'Añadidos recientemente',
+    'view_full_catalog' => 'Ver todo el catálogo',
+    'secure_payment_title' => 'Pago seguro',
+    'secure_payment_text' => 'Cada transacción pasa por Stripe — nunca vemos los datos de tu tarjeta.',
+    'tracked_delivery_title' => 'Entrega con seguimiento',
+    'tracked_delivery_text' => 'Estimación de entrega disponible en cuanto se confirma tu pedido.',
+    'returns_title' => 'Devoluciones en 30 días',
+    'returns_text' => '¿No es lo que esperabas? Devuélvelo sin complicaciones.',
+    'cta_title' => '¿Listo para tu próximo dispositivo?',
+];

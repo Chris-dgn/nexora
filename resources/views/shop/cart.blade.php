@@ -44,7 +44,7 @@
         </div>
     @empty
         <p class="text-gray-500">{{ __('shop.empty_cart') }}</p>
-        <a href="{{ route('shop.index') }}" class="inline-block mt-4 text-sm underline">
+        <a href="{{ route('shop.catalog') }}" class="inline-block mt-4 text-sm underline">
             {{ __('shop.return_to_catalog') }}
         </a>
     @endforelse
