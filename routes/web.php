@@ -6,6 +6,9 @@ use App\Http\Controllers\ShopController;
 use App\Http\Controllers\Webhooks\StripeWebhookController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ReviewController;
+use App\Http\Controllers\LegalController;
+
+
 
 Route::group([
     'prefix' => LaravelLocalization::setLocale(),
@@ -22,6 +25,9 @@ Route::group([
     Route::post('/commander', [CheckoutController::class, 'checkout'])->name('checkout.start');
     Route::get('/commande/succes', [CheckoutController::class, 'success'])->name('checkout.success');
     Route::post('/produits/{product:slug}/avis', [ReviewController::class, 'store'])->name('reviews.store');
+    Route::get('/mentions-legales', [LegalController::class, 'legalNotice'])->name('legal.notice');
+    Route::get('/cgv', [LegalController::class, 'terms'])->name('legal.terms');
+    Route::get('/confidentialite', [LegalController::class, 'privacy'])->name('legal.privacy');
 });
 
 Route::post('/webhooks/stripe', [StripeWebhookController::class, 'handle'])->name('webhooks.stripe');

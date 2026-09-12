@@ -57,5 +57,14 @@
 
         @yield('content')
     </main>
+
+    <footer class="border-t mt-16 py-8">
+    <div class="max-w-6xl mx-auto px-4 flex flex-wrap justify-center gap-6 text-sm text-gray-500">
+        <a href="{{ route('legal.notice') }}" class="hover:text-black">Mentions légales</a>
+        <a href="{{ route('legal.terms') }}" class="hover:text-black">CGV</a>
+        <a href="{{ route('legal.privacy') }}" class="hover:text-black">Confidentialité</a>
+    </div>
+    <p class="text-center text-xs text-gray-400 mt-4">© {{ date('Y') }} Nexora. Tous droits réservés.</p>
+</footer>
 </body>
 </html>
