@@ -34,8 +34,7 @@ class ShopController extends Controller
 {
     abort_unless($product->is_active, 404);
 
-    $product->load('translations');
-
+      $product->load('translations', 'approvedReviews');
         return view('shop.show', [
             'product' => $product,
         ]);

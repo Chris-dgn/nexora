@@ -5,6 +5,7 @@ use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\ShopController;
 use App\Http\Controllers\Webhooks\StripeWebhookController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ReviewController;
 
 Route::group([
     'prefix' => LaravelLocalization::setLocale(),
@@ -20,6 +21,7 @@ Route::group([
 
     Route::post('/commander', [CheckoutController::class, 'checkout'])->name('checkout.start');
     Route::get('/commande/succes', [CheckoutController::class, 'success'])->name('checkout.success');
+    Route::post('/produits/{product:slug}/avis', [ReviewController::class, 'store'])->name('reviews.store');
 });
 
 Route::post('/webhooks/stripe', [StripeWebhookController::class, 'handle'])->name('webhooks.stripe');

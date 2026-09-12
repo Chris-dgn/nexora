@@ -69,4 +69,83 @@
             </div>
         </div>
     </div>
+
+    <div class="mt-16 border-t pt-10">
+    <h2 class="text-xl font-bold mb-4">Avis clients</h2>
+
+    @if ($product->reviews_count > 0)
+        <div class="flex items-center gap-2 mb-6">
+            <span class="text-2xl font-bold">{{ number_format($product->average_rating, 1) }}</span>
+            <div class="text-yellow-500">
+                @for ($i = 1; $i <= 5; $i++)
+                    {{ $i <= round($product->average_rating) ? '★' : '☆' }}
+                @endfor
+            </div>
+            <span class="text-sm text-gray-500">({{ $product->reviews_count }} avis)</span>
+        </div>
+    @else
+        <p class="text-gray-500 mb-6">Aucun avis pour le moment. Sois le premier à donner ton avis !</p>
+    @endif
+
+    <div class="space-y-6 mb-10">
+        @foreach ($product->approvedReviews as $review)
+            <div class="border-b pb-4">
+                <div class="flex items-center gap-2">
+                    <div class="text-yellow-500 text-sm">
+                        @for ($i = 1; $i <= 5; $i++)
+                            {{ $i <= $review->rating ? '★' : '☆' }}
+                        @endfor
+                    </div>
+                    <span class="text-sm font-medium">{{ $review->author_name }}</span>
+                </div>
+                @if ($review->comment)
+                    <p class="text-sm text-gray-600 mt-1">{{ $review->comment }}</p>
+                @endif
+            </div>
+        @endforeach
+    </div>
+
+    <div class="bg-gray-50 rounded-lg p-6">
+        <h3 class="font-semibold mb-4">Laisser un avis</h3>
+
+        <form action="{{ route('reviews.store', $product) }}" method="POST" class="space-y-4">
+            @csrf
+
+            <div>
+                <label class="block text-sm font-medium mb-1">Ton nom</label>
+                <input type="text" name="author_name" required maxlength="255"
+                       class="w-full border rounded px-3 py-2 text-sm" value="{{ old('author_name') }}">
+            </div>
+
+            <div>
+                <label class="block text-sm font-medium mb-1">Note</label>
+                <select name="rating" required class="border rounded px-3 py-2 text-sm">
+                    <option value="">Choisir...</option>
+                    @for ($i = 5; $i >= 1; $i--)
+                        <option value="{{ $i }}" {{ old('rating') == $i ? 'selected' : '' }}>
+                            {{ $i }} étoile{{ $i > 1 ? 's' : '' }}
+                        </option>
+                    @endfor
+                </select>
+            </div>
+
+            <div>
+                <label class="block text-sm font-medium mb-1">Commentaire (optionnel)</label>
+                <textarea name="comment" rows="3" maxlength="2000"
+                          class="w-full border rounded px-3 py-2 text-sm">{{ old('comment') }}</textarea>
+            </div>
+
+            @error('author_name')
+                <p class="text-sm text-red-600">{{ $message }}</p>
+            @enderror
+            @error('rating')
+                <p class="text-sm text-red-600">{{ $message }}</p>
+            @enderror
+
+            <button type="submit" class="bg-black text-white px-6 py-2 rounded-lg text-sm font-medium">
+                Envoyer mon avis
+            </button>
+        </form>
+    </div>
+</div>
 @endsection

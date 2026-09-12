@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use App\Models\ProductTranslation;
+use App\Models\Review;
 
 class Product extends Model
 {
@@ -69,5 +70,25 @@ public function getTranslatedNameAttribute(): string
 public function getTranslatedDescriptionAttribute(): ?string
 {
     return $this->translated()?->description ?? $this->description;
+}
+
+public function reviews(): HasMany
+{
+    return $this->hasMany(Review::class);
+}
+
+public function approvedReviews(): HasMany
+{
+    return $this->reviews()->where('is_approved', true);
+}
+
+public function getAverageRatingAttribute(): ?float
+{
+    return $this->approvedReviews()->avg('rating');
+}
+
+public function getReviewsCountAttribute(): int
+{
+    return $this->approvedReviews()->count();
 }
 }
