@@ -5,13 +5,13 @@
 @section('content')
     <div class="mb-6">
         <a href="{{ route('shop.index') }}" class="text-sm text-gray-500 hover:text-black">
-            ← Retour au catalogue
+            {{ __('shop.back_to_catalog') }}
         </a>
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
         <div class="aspect-square bg-gray-100 rounded-lg flex items-center justify-center text-gray-400">
-            Image
+            {{ __('shop.image_placeholder') }}
         </div>
 
         <div>
@@ -26,46 +26,46 @@
             <div class="mt-4">
                 @if ($product->stock === 0)
                     <span class="inline-block bg-red-100 text-red-700 text-sm px-3 py-1 rounded">
-                        Rupture de stock
+                        {{ __('shop.out_of_stock') }}
                     </span>
                 @elseif ($product->stock < 5)
                     <span class="inline-block bg-orange-100 text-orange-700 text-sm px-3 py-1 rounded">
-                        Plus que {{ $product->stock }} en stock — commandez vite
+                        {{ __('shop.low_stock_urgent', ['count' => $product->stock]) }}
                     </span>
                 @else
                     <span class="inline-block bg-green-100 text-green-700 text-sm px-3 py-1 rounded">
-                        En stock
+                        {{ __('shop.in_stock') }}
                     </span>
                 @endif
             </div>
 
             <p class="mt-6 text-gray-700 leading-relaxed">
-                {{ $product->description ?? 'Aucune description disponible pour ce produit.' }}
+                {{ $product->description ?? __('shop.no_description') }}
             </p>
 
-          @if ($product->stock > 0)
-    <form action="{{ route('cart.add', $product) }}" method="POST" class="mt-8">
-        @csrf
-        <button
-            type="submit"
-            class="w-full bg-black text-white py-3 rounded-lg font-medium hover:bg-gray-800"
-        >
-            Ajouter au panier
-        </button>
-    </form>
-@else
-    <button
-        disabled
-        class="mt-8 w-full bg-gray-300 text-white py-3 rounded-lg font-medium cursor-not-allowed"
-    >
-        Indisponible
-    </button>
-@endif
+            @if ($product->stock > 0)
+                <form action="{{ route('cart.add', $product) }}" method="POST" class="mt-8">
+                    @csrf
+                    <button
+                        type="submit"
+                        class="w-full bg-black text-white py-3 rounded-lg font-medium hover:bg-gray-800"
+                    >
+                        {{ __('shop.add_to_cart') }}
+                    </button>
+                </form>
+            @else
+                <button
+                    disabled
+                    class="mt-8 w-full bg-gray-300 text-white py-3 rounded-lg font-medium cursor-not-allowed"
+                >
+                    {{ __('shop.unavailable') }}
+                </button>
+            @endif
 
             <div class="mt-6 text-xs text-gray-500 space-y-1">
-                <p>✓ Paiement sécurisé par Stripe</p>
-                <p>✓ Livraison sous 3 à 5 jours ouvrés</p>
-                <p>✓ Retours gratuits sous 30 jours</p>
+                <p>{{ __('shop.secure_payment') }}</p>
+                <p>{{ __('shop.delivery_time') }}</p>
+                <p>{{ __('shop.free_returns') }}</p>
             </div>
         </div>
     </div>

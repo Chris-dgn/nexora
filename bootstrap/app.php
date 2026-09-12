@@ -11,9 +11,15 @@ return Application::configure(basePath: dirname(__DIR__))
         commands: __DIR__.'/../routes/console.php',
         health: '/up',
     )
-  ->withMiddleware(function (Middleware $middleware): void {
+ ->withMiddleware(function (Middleware $middleware): void {
     $middleware->validateCsrfTokens(except: [
         'webhooks/stripe',
+    ]);
+
+    $middleware->alias([
+        'localeSessionRedirect' => \Mcamara\LaravelLocalization\Middleware\LocaleSessionRedirect::class,
+        'localizationRedirect' => \Mcamara\LaravelLocalization\Middleware\LaravelLocalizationRedirectFilter::class,
+        'localeViewPath' => \Mcamara\LaravelLocalization\Middleware\LaravelLocalizationViewPath::class,
     ]);
 })
     ->withExceptions(function (Exceptions $exceptions): void {

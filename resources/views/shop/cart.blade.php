@@ -3,9 +3,7 @@
 @section('title', 'Mon panier - Nexora')
 
 @section('content')
-    <h1 class="text-2xl font-bold mb-6">Mon panier</h1>
-
-  
+    <h1 class="text-2xl font-bold mb-6">{{ __('shop.cart') }}</h1>
 
     @forelse ($cart->items as $item)
         <div class="flex items-center justify-between border-b py-4">
@@ -27,7 +25,7 @@
                         class="w-16 border rounded px-2 py-1 text-sm"
                     >
                     <button type="submit" class="text-sm text-gray-600 hover:text-black">
-                        Mettre à jour
+                        {{ __('shop.update') }}
                     </button>
                 </form>
 
@@ -39,29 +37,29 @@
                     @csrf
                     @method('DELETE')
                     <button type="submit" class="text-sm text-red-600 hover:underline">
-                        Retirer
+                        {{ __('shop.remove') }}
                     </button>
                 </form>
             </div>
         </div>
     @empty
-        <p class="text-gray-500">Ton panier est vide.</p>
+        <p class="text-gray-500">{{ __('shop.empty_cart') }}</p>
         <a href="{{ route('shop.index') }}" class="inline-block mt-4 text-sm underline">
-            Retourner au catalogue
+            {{ __('shop.return_to_catalog') }}
         </a>
     @endforelse
 
     @if ($cart->items->isNotEmpty())
         <div class="mt-6 flex justify-between items-center">
             <p class="text-lg font-semibold">
-                Total : {{ number_format($cart->items->sum(fn ($item) => $item->product->price * $item->quantity), 2) }} €
+                {{ __('shop.total', ['amount' => number_format($cart->items->sum(fn ($item) => $item->product->price * $item->quantity), 2) . ' €']) }}
             </p>
             <form action="{{ route('checkout.start') }}" method="POST">
-    @csrf
-    <button type="submit" class="bg-black text-white px-6 py-3 rounded-lg font-medium">
-        Passer commande
-    </button>
-</form>
+                @csrf
+                <button type="submit" class="bg-black text-white px-6 py-3 rounded-lg font-medium">
+                    {{ __('shop.checkout') }}
+                </button>
+            </form>
         </div>
     @endif
 @endsection

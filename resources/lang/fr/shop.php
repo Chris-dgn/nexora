@@ -1,0 +1,27 @@
+<?php
+
+return [
+    'cart' => 'Mon panier',
+    'categories' => 'Catégories',
+    'all_categories' => 'Toutes les catégories',
+    'image_placeholder' => 'Image',
+    'no_products' => 'Aucun produit disponible pour le moment.',
+    'out_of_stock' => 'Rupture de stock',
+    'low_stock' => 'Plus que :count en stock',
+    'low_stock_urgent' => 'Plus que :count en stock — commandez vite',
+    'in_stock' => 'En stock',
+    'back_to_catalog' => '← Retour au catalogue',
+    'no_description' => 'Aucune description disponible pour ce produit.',
+    'add_to_cart' => 'Ajouter au panier',
+    'unavailable' => 'Indisponible',
+    'secure_payment' => '✓ Paiement sécurisé par Stripe',
+    'delivery_time' => '✓ Livraison sous 3 à 5 jours ouvrés',
+    'free_returns' => '✓ Retours gratuits sous 30 jours',
+    'empty_cart' => 'Ton panier est vide.',
+    'return_to_catalog' => 'Retourner au catalogue',
+    'update' => 'Mettre à jour',
+    'remove' => 'Retirer',
+    'total' => 'Total : :amount',
+    'checkout' => 'Passer commande',
+    'my_cart' => 'Mon panier',
+];

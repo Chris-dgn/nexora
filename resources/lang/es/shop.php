@@ -1,0 +1,27 @@
+<?php
+
+return [
+    'cart' => 'Mi carrito',
+    'categories' => 'Categorías',
+    'all_categories' => 'Todas las categorías',
+    'image_placeholder' => 'Imagen',
+    'no_products' => 'No hay productos disponibles por el momento.',
+    'out_of_stock' => 'Agotado',
+    'low_stock' => 'Solo quedan :count en stock',
+    'low_stock_urgent' => 'Solo quedan :count en stock — pide ya',
+    'in_stock' => 'En stock',
+    'back_to_catalog' => '← Volver al catálogo',
+    'no_description' => 'No hay descripción disponible para este producto.',
+    'add_to_cart' => 'Añadir al carrito',
+    'unavailable' => 'No disponible',
+    'secure_payment' => '✓ Pago seguro con Stripe',
+    'delivery_time' => '✓ Entrega en 3 a 5 días hábiles',
+    'free_returns' => '✓ Devoluciones gratuitas en 30 días',
+    'empty_cart' => 'Tu carrito está vacío.',
+    'return_to_catalog' => 'Volver al catálogo',
+    'update' => 'Actualizar',
+    'remove' => 'Eliminar',
+    'total' => 'Total: :amount',
+    'checkout' => 'Finalizar compra',
+    'my_cart' => 'Mi carrito',
+];
