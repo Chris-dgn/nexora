@@ -84,6 +84,33 @@ class ProductResource extends Resource
                 Forms\Components\Toggle::make('is_active')
                     ->label('Actif (visible sur le site)')
                     ->default(true),
+
+                    Forms\Components\Repeater::make('translations')
+    ->relationship()
+    ->label('Traductions')
+    ->schema([
+        Forms\Components\Select::make('locale')
+            ->label('Langue')
+            ->options([
+                'en' => 'English',
+                'de' => 'Deutsch',
+                'es' => 'Español',
+            ])
+            ->required(),
+
+        Forms\Components\TextInput::make('name')
+            ->label('Nom traduit')
+            ->required()
+            ->maxLength(255),
+
+        Forms\Components\Textarea::make('description')
+            ->label('Description traduite')
+            ->rows(3),
+    ])
+    ->columns(1)
+    ->columnSpanFull()
+    ->defaultItems(0)
+    ->addActionLabel('Ajouter une traduction'),
             ]);
     }
 

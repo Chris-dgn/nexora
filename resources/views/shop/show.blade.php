@@ -15,7 +15,7 @@
         </div>
 
         <div>
-            <h1 class="text-2xl font-bold">{{ $product->name }}</h1>
+            <h1 class="text-2xl font-bold">{{ $product->translated_name }}</h1>
             <p class="text-sm text-gray-500 mt-1">{{ $product->category->name }}</p>
 
             <p class="text-3xl font-semibold mt-4">{{ number_format($product->price, 2) }} €</p>
@@ -40,7 +40,7 @@
             </div>
 
             <p class="mt-6 text-gray-700 leading-relaxed">
-                {{ $product->description ?? __('shop.no_description') }}
+                {{ $product->translated_description ?? __('shop.no_description') }}
             </p>
 
             @if ($product->stock > 0)

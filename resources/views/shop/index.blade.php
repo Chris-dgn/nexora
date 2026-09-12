@@ -31,7 +31,7 @@
                         <div class="aspect-square bg-gray-100 rounded mb-3 flex items-center justify-center text-gray-400">
                             {{ __('shop.image_placeholder') }}
                         </div>
-                        <h3 class="font-medium text-sm">{{ $product->name }}</h3>
+                        <h3 class="font-medium text-sm">{{ $product->translated_name }}</h3>
                         <p class="text-lg font-semibold mt-1">{{ number_format($product->price, 2) }} €</p>
                         @if ($product->stock === 0)
                             <span class="text-xs text-red-600">{{ __('shop.out_of_stock') }}</span>

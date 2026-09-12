@@ -12,7 +12,8 @@ class ShopController extends Controller
     public function index(Request $request): View
     {
         $products = Product::query()
-            ->where('is_active', true)
+    ->with('translations')
+    ->where('is_active', true)
             ->when($request->filled('category'), function ($query) use ($request) {
                 $query->whereHas('category', function ($q) use ($request) {
                     $q->where('slug', $request->input('category'));
@@ -29,9 +30,11 @@ class ShopController extends Controller
         ]);
     }
 
-    public function show(Product $product): View
-    {
-        abort_unless($product->is_active, 404);
+   public function show(Product $product): View
+{
+    abort_unless($product->is_active, 404);
+
+    $product->load('translations');
 
         return view('shop.show', [
             'product' => $product,

@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use App\Models\ProductTranslation;
 
 class Product extends Model
 {
@@ -49,4 +50,24 @@ class Product extends Model
     {
         return $this->hasMany(OrderItem::class);
     }
+
+    public function translations(): HasMany
+{
+    return $this->hasMany(ProductTranslation::class);
+}
+
+public function translated(): ?ProductTranslation
+{
+    return $this->translations->firstWhere('locale', app()->getLocale());
+}
+
+public function getTranslatedNameAttribute(): string
+{
+    return $this->translated()?->name ?? $this->name;
+}
+
+public function getTranslatedDescriptionAttribute(): ?string
+{
+    return $this->translated()?->description ?? $this->description;
+}
 }
